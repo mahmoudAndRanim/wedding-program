@@ -66,6 +66,10 @@ const translations = {
     giftValue: 'Bidrag til bryllupsreise',
     contact: 'Kontakt',
     contactValue: 'Mahmoud: 123 45 678',
+    photoTitle: 'Del bildene dine',
+    photoDesc: 'Last opp bilder fra festen så alle kan se dem!',
+    photoBtn: 'Last opp bilder',
+    photoView: 'Se bildene',
     langBtn: 'عربي',
   },
   ar: {
@@ -89,6 +93,10 @@ const translations = {
     giftValue: 'مساهمة في شهر العسل',
     contact: 'للتواصل',
     contactValue: 'محمود: ٦٧٨ ٤٥ ١٢٣',
+    photoTitle: 'شاركوا صوركم',
+    photoDesc: 'ارفعوا صور الحفلة ليراها الجميع!',
+    photoBtn: 'رفع الصور',
+    photoView: 'عرض الصور',
     langBtn: 'Norsk',
   }
 }
@@ -198,9 +206,30 @@ function App() {
       <section className="extra-section">
         <p className="ceremony-note">{t.ceremonyNote}</p>
         
-        <div className="hashtag-box">
-          <span className="hashtag-label">{t.hashtag}</span>
-          <span className="hashtag-value">{t.hashtagValue}</span>
+        {/* Photo sharing */}
+        <div className="photo-share-box">
+          <div className="photo-icon">📷</div>
+          <h3 className="photo-title">{t.photoTitle}</h3>
+          <p className="photo-desc">{t.photoDesc}</p>
+          <div className="photo-buttons">
+            <a 
+              href="https://photos.app.goo.gl/XXXXXX" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="photo-btn upload"
+            >
+              {t.photoBtn}
+            </a>
+            <a 
+              href="https://photos.app.goo.gl/XXXXXX" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="photo-btn view"
+            >
+              {t.photoView}
+            </a>
+          </div>
+          <div className="hashtag-tag">{t.hashtagValue}</div>
         </div>
 
         <div className="info-item">

@@ -290,3 +290,84 @@
   padding-top: 1rem;
   border-top: 1px solid rgba(138, 118, 80, 0.1);
 }
+
+/* Photo sharing box */
+.photo-share-box {
+  background: linear-gradient(135deg, rgba(138, 118, 80, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border: 1px solid rgba(138, 118, 80, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.photo-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.photo-title {
+  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin: 0;
+}
+
+.photo-desc {
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.photo-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.photo-btn {
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.photo-btn.upload {
+  background: var(--gold);
+  color: white;
+}
+
+.photo-btn.upload:hover {
+  background: #6d5c3d;
+  transform: scale(1.05);
+}
+
+.photo-btn.view {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.photo-btn.view:hover {
+  background: var(--gold);
+  color: white;
+}
+
+.hashtag-tag {
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold);
+  background: rgba(138, 118, 80, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 15px;
+  margin-top: 0.25rem;
+}
