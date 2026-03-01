@@ -1,0 +1,401 @@
+/* Wedding Program Styles - Matching Main Wedding Site */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Aref+Ruqaa&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap');
+
+:root {
+  --bg: #ECE7D1;
+  --bg2: #DBCEA5;
+  --text: #3D3228;
+  --text-dim: rgba(61, 50, 40, 0.68);
+  --text-faint: rgba(61, 50, 40, 0.42);
+  --gold: #8A7650;
+  --gold-soft: #9E8D62;
+  --gold-dim: #6B7360;
+  --gold-deep: #5C4F35;
+  --rose-gold: #8E977D;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.wedding-container {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 3rem 1.5rem;
+  position: relative;
+}
+
+.wedding-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(138, 118, 80, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 80% at 15% 60%, rgba(142, 151, 125, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 80% at 85% 60%, rgba(142, 151, 125, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Bismillah */
+.bismillah {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  color: var(--gold);
+  margin-bottom: 2rem;
+  letter-spacing: 0.04em;
+  direction: rtl;
+}
+
+/* Header */
+.wedding-header {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+}
+
+.couple-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.names-ar {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: var(--gold);
+  direction: rtl;
+  line-height: 1.2;
+}
+
+.names-en {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.date-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  margin: 0 auto 1rem;
+  max-width: 350px;
+  border-top: 1px solid rgba(138, 118, 80, 0.3);
+  border-bottom: 1px solid rgba(138, 118, 80, 0.3);
+}
+
+.date-badge span {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text);
+}
+
+.date-badge .day {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.date-badge .month {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.date-badge .year {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.adults-only {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(138, 118, 80, 0.2);
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0.75rem auto 0;
+}
+
+/* Program section */
+.program-section {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.program-timeline {
+  position: relative;
+}
+
+.program-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(138, 118, 80, 0.12);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.program-item:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(138, 118, 80, 0.25);
+  transform: translateY(-2px);
+}
+
+.program-item .time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: rgba(255, 250, 240, 0.95);
+  min-width: 70px;
+  text-align: center;
+  padding: 0.6rem 0.8rem;
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+.program-item .event {
+  text-align: left;
+  flex: 1;
+}
+
+.program-item .event h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.03em;
+}
+
+.program-item .event p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Info section */
+.info-section {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(138, 118, 80, 0.12);
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(138, 118, 80, 0.25);
+  transform: translateY(-3px);
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+}
+
+.info-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.info-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.info-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0.25rem 0;
+  line-height: 1.6;
+}
+
+.info-card .address {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 0 auto 1.5rem;
+  width: fit-content;
+}
+
+.divider-line {
+  width: clamp(30px, 8vw, 60px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim));
+}
+
+.divider-line:last-child {
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+}
+
+.divider-star {
+  width: 8px;
+  height: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.divider-star::before,
+.divider-star::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--gold-dim);
+  transform-origin: center;
+}
+
+.divider-star::before {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.divider-star::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* Footer */
+.wedding-footer {
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-message {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+
+.couple-initials {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .names-ar {
+    font-size: 2.2rem;
+  }
+  
+  .names-en {
+    font-size: 1.8rem;
+  }
+  
+  .date-badge {
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .date-badge .day {
+    font-size: 2.5rem;
+  }
+  
+  .program-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .program-item .event {
+    text-align: center;
+  }
+  
+  .program-item .time {
+    min-width: auto;
+    width: 90px;
+    margin: 0 auto;
+  }
+}
