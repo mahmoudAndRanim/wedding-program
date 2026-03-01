@@ -1,12 +1,10 @@
 :root {
-  font-family: 'Cormorant Garamond', 'Montserrat', serif;
-  line-height: 1.6;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light;
   color: #3D3228;
   background-color: #ECE7D1;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,11 +19,11 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+  min-height: 100dvh;
   background: #ECE7D1;
-  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
+  margin: 0;
 }
