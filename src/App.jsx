@@ -67,13 +67,9 @@ const translations = {
     getDirections: 'Veibeskrivelse',
     addToCalendar: 'Legg til i kalender',
     photoTitle: 'Del bilder & video',
-    photoDesc: 'Velg bilder/videoer og del til albumet',
-    photoSelect: 'Velg filer',
-    photoShare: 'Del til album',
-    photoView: 'Se album',
-    photoTip: 'Velg filer → Trykk "Del til album" → Velg Google Photos',
-    photoSelected: 'valgt',
-    photoNone: 'Ingen filer valgt',
+    photoDesc: 'Trykk knappen for å åpne albumet og legg til dine bilder!',
+    photoAddBtn: 'Legg til bilder',
+    photoViewBtn: 'Se albumet',
     gift: 'Ønskeliste',
     giftValue: 'Bidrag til bryllupsreise',
     contact: 'Kontakt',
@@ -104,13 +100,9 @@ const translations = {
     getDirections: 'الاتجاهات',
     addToCalendar: 'أضف للتقويم',
     photoTitle: 'شاركوا الصور والفيديو',
-    photoDesc: 'اختاروا الصور/الفيديو وشاركوها في الألبوم',
-    photoSelect: 'اختيار ملفات',
-    photoShare: 'مشاركة للألبوم',
-    photoView: 'الألبوم',
-    photoTip: 'اختاروا الملفات ← اضغطوا "مشاركة" ← اختاروا Google Photos',
-    photoSelected: 'ملفات',
-    photoNone: 'لم يتم اختيار ملفات',
+    photoDesc: 'اضغطوا الزر لفتح الألبوم وأضيفوا صوركم!',
+    photoAddBtn: 'إضافة صور',
+    photoViewBtn: 'عرض الألبوم',
     gift: 'الهدايا',
     giftValue: 'مساهمة في شهر العسل',
     contact: 'للتواصل',
@@ -124,38 +116,8 @@ const translations = {
 function App() {
   const [lang, setLang] = useState('ar')
   const [currentEvent, setCurrentEvent] = useState(-1)
-  const [selectedFiles, setSelectedFiles] = useState([])
   const t = translations[lang]
   const isArabic = lang === 'ar'
-
-  const handleFileSelect = (e) => {
-    const files = Array.from(e.target.files)
-    setSelectedFiles(files)
-  }
-
-  const handleShare = async () => {
-    if (selectedFiles.length === 0) return
-    
-    // Check if Web Share API with files is supported
-    if (navigator.canShare && navigator.canShare({ files: selectedFiles })) {
-      try {
-        await navigator.share({
-          files: selectedFiles,
-          title: 'Mahmoud & Ranim Wedding',
-          text: t.hashtag,
-        })
-        setSelectedFiles([])
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          // Fallback to opening album
-          window.open(PHOTO_ALBUM_URL, '_blank')
-        }
-      }
-    } else {
-      // Fallback for browsers that don't support file sharing
-      window.open(PHOTO_ALBUM_URL, '_blank')
-    }
-  }
 
   useEffect(() => {
     setCurrentEvent(getCurrentEventIndex())
@@ -231,43 +193,15 @@ function App() {
           <h3 className="photo-title">{t.photoTitle}</h3>
           <p className="photo-desc">{t.photoDesc}</p>
           
-          {/* File selection */}
-          <div className="file-upload-area">
-            <input 
-              type="file" 
-              id="photo-input"
-              accept="image/*,video/*"
-              multiple
-              onChange={handleFileSelect}
-              className="file-input"
-            />
-            <label htmlFor="photo-input" className="file-label">
-              📁 {t.photoSelect}
-            </label>
-            
-            {selectedFiles.length > 0 ? (
-              <div className="file-count">
-                ✓ {selectedFiles.length} {t.photoSelected}
-              </div>
-            ) : (
-              <div className="file-count empty">{t.photoNone}</div>
-            )}
-          </div>
-
           <div className="photo-buttons">
-            <button 
-              onClick={handleShare}
-              className={`photo-btn upload ${selectedFiles.length === 0 ? 'disabled' : ''}`}
-              disabled={selectedFiles.length === 0}
-            >
-              📤 {t.photoShare}
-            </button>
+            <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn upload">
+              📤 {t.photoAddBtn}
+            </a>
             <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn view">
-              👀 {t.photoView}
+              👀 {t.photoViewBtn}
             </a>
           </div>
           
-          <p className="photo-tip">{t.photoTip}</p>
           <div className="hashtag-tag">{t.hashtag}</div>
         </div>
       </section>
