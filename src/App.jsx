@@ -68,10 +68,6 @@ const translations = {
     addToCalendar: 'Legg til i kalender',
     photoTitle: 'Del bilder & video',
     photoBtn: 'Åpne album',
-    gift: 'Bryllupsreise',
-    giftBtn: 'Send gave via Vipps',
-    contact: 'Kontakt',
-    contactValue: 'Mahmoud: 123 45 678',
     hashtag: '#MahmoudOgRanim',
     weddingDay: 'I dag er dagen! 💍',
     langBtn: 'عربي',
@@ -99,10 +95,6 @@ const translations = {
     addToCalendar: 'أضف للتقويم',
     photoTitle: 'شاركوا الصور والفيديو',
     photoBtn: 'افتح الألبوم',
-    gift: 'شهر العسل',
-    giftBtn: 'أرسل هدية عبر Vipps',
-    contact: 'للتواصل',
-    contactValue: 'محمود: ٦٧٨ ٤٥ ١٢٣',
     hashtag: '#محمود_ورنيم',
     weddingDay: 'اليوم هو اليوم! 💍',
     langBtn: 'Norsk',
@@ -190,20 +182,6 @@ function App() {
             📷 {t.photoBtn}
           </a>
           <div className="hashtag-tag">{t.hashtag}</div>
-        </div>
-      </section>
-
-      {/* Gift & Contact */}
-      <section className="footer-section">
-        <div className="gift-section">
-          <span className="gift-label">🎁 {t.gift}</span>
-          <a href="vipps://send?number=95528725" className="vipps-btn">
-            {t.giftBtn}
-          </a>
-        </div>
-        <div className="info-item">
-          <span className="info-label">📞 {t.contact}</span>
-          <span className="info-value">{t.contactValue}</span>
         </div>
       </section>
     </div>
