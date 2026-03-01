@@ -4,6 +4,9 @@ import './App.css'
 // Wedding date: March 28, 2026
 const WEDDING_DATE = '2026-03-28'
 
+// DEMO MODE: Set to true to test active indicator (remove before wedding!)
+const DEMO_MODE = false
+
 const programTimes = [
   { time: '17:00', endTime: '18:00' },
   { time: '18:00', endTime: '19:00' },
@@ -14,6 +17,9 @@ const programTimes = [
 ]
 
 function getCurrentEventIndex() {
+  // Demo mode: always show second item (reception) as active
+  if (DEMO_MODE) return 1
+  
   const now = new Date()
   const today = now.toISOString().split('T')[0]
   
@@ -40,7 +46,7 @@ function getCurrentEventIndex() {
 
 const translations = {
   no: {
-    program: 'Program',
+    program: 'Bryllupsprogram',
     date: '28. mars 2026',
     ceremony: 'Seremoni',
     reception: 'Velkomstdrink',
@@ -51,10 +57,19 @@ const translations = {
     venue: 'Sted',
     dresscode: 'Dresscode',
     dresscodeValue: 'Festantrekk',
+    parking: 'Parkering',
+    parkingValue: 'Gratis parkering ved lokalet',
+    hashtag: 'Del bilder',
+    hashtagValue: '#MahmoudOgRanim',
+    ceremonyNote: 'Vi ber om mobilfri seremoni',
+    gift: 'Ønskeliste',
+    giftValue: 'Bidrag til bryllupsreise',
+    contact: 'Kontakt',
+    contactValue: 'Mahmoud: 123 45 678',
     langBtn: 'عربي',
   },
   ar: {
-    program: 'البرنامج',
+    program: 'برنامج الزفاف',
     date: '٢٨ مارس ٢٠٢٦',
     ceremony: 'الحفل',
     reception: 'استقبال الضيوف',
@@ -65,6 +80,15 @@ const translations = {
     venue: 'المكان',
     dresscode: 'الملابس',
     dresscodeValue: 'رسمي أنيق',
+    parking: 'موقف السيارات',
+    parkingValue: 'موقف مجاني بجانب القاعة',
+    hashtag: 'شاركوا الصور',
+    hashtagValue: '#محمود_ورنيم',
+    ceremonyNote: 'نرجو عدم استخدام الهاتف أثناء الحفل',
+    gift: 'الهدايا',
+    giftValue: 'مساهمة في شهر العسل',
+    contact: 'للتواصل',
+    contactValue: 'محمود: ٦٧٨ ٤٥ ١٢٣',
     langBtn: 'Norsk',
   }
 }
@@ -163,6 +187,30 @@ function App() {
         <div className="info-item">
           <span className="info-label">{t.dresscode}</span>
           <span className="info-value">{t.dresscodeValue}</span>
+        </div>
+        <div className="info-item">
+          <span className="info-label">{t.parking}</span>
+          <span className="info-value">{t.parkingValue}</span>
+        </div>
+      </section>
+
+      {/* Additional info */}
+      <section className="extra-section">
+        <p className="ceremony-note">{t.ceremonyNote}</p>
+        
+        <div className="hashtag-box">
+          <span className="hashtag-label">{t.hashtag}</span>
+          <span className="hashtag-value">{t.hashtagValue}</span>
+        </div>
+
+        <div className="info-item">
+          <span className="info-label">{t.gift}</span>
+          <span className="info-value">{t.giftValue}</span>
+        </div>
+
+        <div className="info-item contact-item">
+          <span className="info-label">{t.contact}</span>
+          <span className="info-value">{t.contactValue}</span>
         </div>
       </section>
     </div>
