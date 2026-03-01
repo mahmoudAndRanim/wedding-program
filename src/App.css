@@ -398,11 +398,6 @@
   gap: 0.5rem;
 }
 
-.photo-icon {
-  font-size: 2rem;
-  line-height: 1;
-}
-
 .photo-title {
   font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
   font-size: 1.2rem;
@@ -411,117 +406,23 @@
   margin: 0;
 }
 
-.photo-desc {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  margin: 0;
-}
-
-.photo-buttons {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
 .photo-btn {
   font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 2rem;
   border-radius: 25px;
   text-decoration: none;
+  background: var(--gold);
+  color: white;
+  display: inline-block;
+  margin: 0.5rem 0;
   transition: all 0.3s ease;
 }
 
-.photo-btn.upload {
-  background: var(--gold);
-  color: white;
-}
-
-.photo-btn.upload:hover {
+.photo-btn:hover {
   background: #6d5c3d;
   transform: scale(1.05);
-}
-
-.photo-btn.view {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-}
-
-.photo-btn.view:hover {
-  background: var(--gold);
-  color: white;
-}
-
-/* File upload area */
-.file-upload-area {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
-}
-
-.file-input {
-  display: none;
-}
-
-.file-label {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--gold);
-  background: var(--white);
-  border: 2px dashed rgba(138, 118, 80, 0.4);
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-align: center;
-}
-
-.file-label:hover {
-  border-color: var(--gold);
-  background: var(--gold-light);
-}
-
-.file-count {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--gold);
-  background: rgba(138, 118, 80, 0.15);
-  padding: 0.35rem 0.75rem;
-  border-radius: 15px;
-}
-
-.file-count.empty {
-  color: var(--text-dim);
-  background: transparent;
-}
-
-/* Button as button element */
-button.photo-btn {
-  border: none;
-  cursor: pointer;
-}
-
-button.photo-btn.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
-}
-
-.photo-tip {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.7rem;
-  font-style: italic;
-  color: var(--text-dim);
-  margin: 0.25rem 0 0;
 }
 
 .hashtag-tag {

@@ -67,9 +67,7 @@ const translations = {
     getDirections: 'Veibeskrivelse',
     addToCalendar: 'Legg til i kalender',
     photoTitle: 'Del bilder & video',
-    photoDesc: 'Trykk knappen for å åpne albumet og legg til dine bilder!',
-    photoAddBtn: 'Legg til bilder',
-    photoViewBtn: 'Se albumet',
+    photoBtn: 'Åpne album',
     gift: 'Ønskeliste',
     giftValue: 'Bidrag til bryllupsreise',
     contact: 'Kontakt',
@@ -100,9 +98,7 @@ const translations = {
     getDirections: 'الاتجاهات',
     addToCalendar: 'أضف للتقويم',
     photoTitle: 'شاركوا الصور والفيديو',
-    photoDesc: 'اضغطوا الزر لفتح الألبوم وأضيفوا صوركم!',
-    photoAddBtn: 'إضافة صور',
-    photoViewBtn: 'عرض الألبوم',
+    photoBtn: 'افتح الألبوم',
     gift: 'الهدايا',
     giftValue: 'مساهمة في شهر العسل',
     contact: 'للتواصل',
@@ -189,19 +185,10 @@ function App() {
       {/* Photo sharing */}
       <section className="photo-section">
         <div className="photo-share-box">
-          <div className="photo-icon">📷</div>
           <h3 className="photo-title">{t.photoTitle}</h3>
-          <p className="photo-desc">{t.photoDesc}</p>
-          
-          <div className="photo-buttons">
-            <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn upload">
-              📤 {t.photoAddBtn}
-            </a>
-            <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn view">
-              👀 {t.photoViewBtn}
-            </a>
-          </div>
-          
+          <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn">
+            📷 {t.photoBtn}
+          </a>
           <div className="hashtag-tag">{t.hashtag}</div>
         </div>
       </section>
