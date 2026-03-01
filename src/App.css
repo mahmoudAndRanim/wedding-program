@@ -1,5 +1,5 @@
 /* Wedding Program - Simple Mobile-First */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap');
 
 :root {
   --bg: #ECE7D1;
@@ -27,6 +27,57 @@
   padding: 2rem 1.25rem;
   max-width: 500px;
   margin: 0 auto;
+  position: relative;
+}
+
+/* Language toggle */
+.lang-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(138, 118, 80, 0.1);
+  border: 1px solid rgba(138, 118, 80, 0.3);
+  color: var(--gold);
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+  background: var(--gold);
+  color: white;
+}
+
+.rtl .lang-toggle {
+  right: auto;
+  left: 1rem;
+}
+
+/* RTL support */
+.rtl {
+  direction: rtl;
+}
+
+.rtl .program-item {
+  border-left: none;
+  border-right: 3px solid var(--gold);
+}
+
+.rtl .page-title,
+.rtl .program-item .event h3 {
+  font-family: 'Noto Naskh Arabic', serif;
+}
+
+.rtl .info-item {
+  flex-direction: row-reverse;
+}
+
+.rtl .info-value {
+  text-align: left;
 }
 
 /* Header */
@@ -34,6 +85,7 @@
   text-align: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
+  padding-top: 2rem;
   border-bottom: 1px solid rgba(138, 118, 80, 0.2);
 }
 
