@@ -174,3 +174,61 @@
   color: var(--text);
   text-align: right;
 }
+
+/* Active event indicator */
+.program-item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.program-item.active {
+  background: rgba(138, 118, 80, 0.15);
+  border-left-width: 4px;
+  transform: scale(1.02);
+}
+
+.rtl .program-item.active {
+  border-left-width: 3px;
+  border-right-width: 4px;
+}
+
+.program-item.completed {
+  opacity: 0.5;
+}
+
+.program-item.completed .time,
+.program-item.completed .event h3 {
+  text-decoration: line-through;
+  text-decoration-color: var(--gold);
+}
+
+.now-indicator {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--gold);
+  color: white;
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.rtl .now-indicator {
+  right: auto;
+  left: 1rem;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
