@@ -128,62 +128,82 @@ function App() {
 
       {/* Header */}
       <header className="wedding-header">
-        <p className="couple-names">{t.couple}</p>
-        <h1 className="page-title">{t.program}</h1>
-        <p className="date-line">{t.date}</p>
+        <div className="header-ornament">✦ ✦ ✦</div>
+        <h1 className="couple-names">{t.couple}</h1>
+        <p className="page-title">{t.program}</p>
+        <div className="date-display">
+          <span className="date-icon">📅</span>
+          <span>{t.date}</span>
+        </div>
       </header>
 
       {/* Program */}
-      <section className="program-section">
+      <section className="section-card">
         <div className="program-timeline">
-          <div className={`program-item ${currentEvent === 0 ? 'active' : ''} ${currentEvent > 0 ? 'completed' : ''}`}>
-            <div className="time">17:00</div>
-            <div className="event"><h3>{t.ceremony}</h3></div>
-            {currentEvent === 0 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
+          <div className={`timeline-item ${currentEvent === 0 ? 'active' : ''} ${currentEvent > 0 ? 'completed' : ''}`}>
+            <div className="timeline-content">
+              <span className="timeline-time">17:00</span>
+              <span className="timeline-event">{t.ceremony}</span>
+              {currentEvent === 0 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+            </div>
           </div>
 
-          <div className={`program-item ${currentEvent === 1 ? 'active' : ''} ${currentEvent > 1 ? 'completed' : ''}`}>
-            <div className="time">18:00</div>
-            <div className="event"><h3>{t.reception}</h3></div>
-            {currentEvent === 1 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
+          <div className={`timeline-item ${currentEvent === 1 ? 'active' : ''} ${currentEvent > 1 ? 'completed' : ''}`}>
+            <div className="timeline-content">
+              <span className="timeline-time">18:00</span>
+              <span className="timeline-event">{t.reception}</span>
+              {currentEvent === 1 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+            </div>
           </div>
 
-          <div className={`program-item ${currentEvent === 2 ? 'active' : ''} ${currentEvent > 2 ? 'completed' : ''}`}>
-            <div className="time">19:00</div>
-            <div className="event"><h3>{t.dinner}</h3></div>
-            {currentEvent === 2 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
+          <div className={`timeline-item ${currentEvent === 2 ? 'active' : ''} ${currentEvent > 2 ? 'completed' : ''}`}>
+            <div className="timeline-content">
+              <span className="timeline-time">19:00</span>
+              <span className="timeline-event">{t.dinner}</span>
+              {currentEvent === 2 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+            </div>
           </div>
 
-          <div className={`program-item ${currentEvent === 3 ? 'active' : ''} ${currentEvent > 3 ? 'completed' : ''}`}>
-            <div className="time">21:00</div>
-            <div className="event"><h3>{t.speeches}</h3></div>
-            {currentEvent === 3 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
+          <div className={`timeline-item ${currentEvent === 3 ? 'active' : ''} ${currentEvent > 3 ? 'completed' : ''}`}>
+            <div className="timeline-content">
+              <span className="timeline-time">21:00</span>
+              <span className="timeline-event">{t.speeches}</span>
+              {currentEvent === 3 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+            </div>
           </div>
 
-          <div className={`program-item ${currentEvent === 4 ? 'active' : ''} ${currentEvent > 4 ? 'completed' : ''}`}>
-            <div className="time">22:00</div>
-            <div className="event"><h3>{t.cake}</h3></div>
-            {currentEvent === 4 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
+          <div className={`timeline-item ${currentEvent === 4 ? 'active' : ''} ${currentEvent > 4 ? 'completed' : ''}`}>
+            <div className="timeline-content">
+              <span className="timeline-time">22:00</span>
+              <span className="timeline-event">{t.cake}</span>
+              {currentEvent === 4 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+            </div>
           </div>
 
-          <div className={`program-item ${currentEvent === 5 ? 'active' : ''}`}>
-            <div className="time">23:00</div>
-            <div className="event"><h3>{t.party}</h3></div>
-            {currentEvent === 5 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
+          <div className={`timeline-item ${currentEvent === 5 ? 'active' : ''}`}>
+            <div className="timeline-content">
+              <span className="timeline-time">23:00</span>
+              <span className="timeline-event">{t.party}</span>
+              {currentEvent === 5 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Photo sharing */}
-      <section className="photo-section">
-        <div className="photo-share-box">
-          <h3 className="photo-title">{t.photoTitle}</h3>
-          <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn">
-            📷 {t.photoBtn}
-          </a>
-          <div className="hashtag-tag">{t.hashtag}</div>
-        </div>
+      <section className="section-card photo-card">
+        <h3 className="photo-title">{t.photoTitle}</h3>
+        <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn">
+          📷 {t.photoBtn}
+        </a>
+        <div className="hashtag-tag">{t.hashtag}</div>
       </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-ornament">✦</div>
+        <p className="footer-names">{t.couple}</p>
+      </footer>
     </div>
   )
 }

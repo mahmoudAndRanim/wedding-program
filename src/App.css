@@ -1,19 +1,33 @@
-/* Wedding Program - Complete Mobile-First App */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap');
+/* Wedding Program - Elegant Professional Design */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #ECE7D1;
+  --bg: #F5F2E8;
+  --bg-card: rgba(255, 255, 255, 0.85);
   --text: #3D3228;
-  --text-dim: rgba(61, 50, 40, 0.6);
+  --text-dim: rgba(61, 50, 40, 0.55);
   --gold: #8A7650;
-  --gold-light: rgba(138, 118, 80, 0.1);
-  --white: rgba(255, 255, 255, 0.6);
+  --gold-dark: #6d5c3d;
+  --gold-light: rgba(138, 118, 80, 0.08);
+  --gold-glow: rgba(138, 118, 80, 0.15);
+  --border: rgba(138, 118, 80, 0.12);
+  --shadow: 0 4px 20px rgba(61, 50, 40, 0.06);
+  --shadow-hover: 0 8px 30px rgba(61, 50, 40, 0.1);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(180deg, #F5F2E8 0%, #EDE9DC 100%);
+  min-height: 100vh;
 }
 
 #root {
@@ -25,39 +39,59 @@
 .wedding-container {
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--bg);
-  padding: 1.5rem 1.25rem 2rem;
-  max-width: 500px;
+  padding: 0 1.25rem 3rem;
+  max-width: 440px;
   margin: 0 auto;
   position: relative;
 }
 
+/* Decorative background elements */
+.wedding-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 440px;
+  height: 280px;
+  background: radial-gradient(ellipse at center top, var(--gold-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Language toggle */
 .lang-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--gold-light);
-  border: 1px solid rgba(138, 118, 80, 0.3);
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
   color: var(--gold);
   font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.6rem 1.1rem;
+  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  box-shadow: var(--shadow);
+  letter-spacing: 0.02em;
 }
 
 .lang-toggle:hover {
   background: var(--gold);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .rtl .lang-toggle {
   right: auto;
-  left: 1rem;
+  left: 1.25rem;
 }
 
 /* RTL support */
@@ -65,337 +99,258 @@
   direction: rtl;
 }
 
-.rtl .program-item {
-  border-left: none;
-  border-right: 3px solid var(--gold);
+.rtl .timeline-item::before {
+  left: auto;
+  right: 0;
+}
+
+.rtl .timeline-item::after {
+  left: auto;
+  right: -5px;
+}
+
+.rtl .timeline-content {
+  margin-left: 0;
+  margin-right: 1.75rem;
+}
+
+.rtl .program-timeline {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.rtl .timeline-item::before {
+  left: auto;
+  right: -1.5rem;
+}
+
+.rtl .timeline-item::after {
+  left: auto;
+  right: calc(-1.5rem - 4px);
 }
 
 .rtl .page-title,
 .rtl .couple-names,
-.rtl .program-item .event h3,
-.rtl .photo-title {
+.rtl .timeline-event,
+.rtl .photo-title,
+.rtl .section-title,
+.rtl .footer-names {
   font-family: 'Noto Naskh Arabic', serif;
-}
-
-.rtl .info-item {
-  flex-direction: row-reverse;
-}
-
-.rtl .info-value {
-  text-align: left;
 }
 
 /* Header */
 .wedding-header {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding-top: 2.5rem;
+  padding: 4rem 0 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header-ornament {
+  font-size: 1.5rem;
+  opacity: 0.4;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
 }
 
 .couple-names {
   font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2.2rem;
+  font-weight: 500;
   color: var(--gold);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .page-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--text-dim);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.date-line {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
-}
-
-/* Wedding Day Banner */
-.wedding-day-banner {
-  text-align: center;
-  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--gold);
-  background: linear-gradient(135deg, var(--gold-light), var(--white));
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  animation: glow 2s ease-in-out infinite;
-}
-
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(138, 118, 80, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(138, 118, 80, 0.4); }
-}
-
-/* Countdown */
-.countdown-section {
-  margin-bottom: 1.5rem;
-}
-
-.countdown-boxes {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.countdown-box {
-  background: var(--white);
-  border: 1px solid rgba(138, 118, 80, 0.2);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  text-align: center;
-  min-width: 70px;
-}
-
-.countdown-number {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.countdown-label {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.65rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
   font-weight: 500;
   color: var(--text-dim);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
 }
 
-/* Program */
-.program-section {
-  margin-bottom: 1.5rem;
-}
-
-.program-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.program-item {
-  display: flex;
+.date-display {
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
-  background: var(--white);
-  border-radius: 8px;
-  border-left: 3px solid var(--gold);
+  gap: 0.75rem;
+  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg-card);
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.date-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Section styling */
+.section-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
   position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+}
+
+.section-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 1.5rem;
+}
+
+/* Timeline Program */
+.program-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 1.25rem;
+  padding-left: 0.25rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Timeline line */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--border) 100%);
+}
+
+.timeline-item:last-child::before {
+  height: 10px;
+}
+
+/* Timeline dot */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: calc(-1.5rem - 4px);
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  background: var(--bg);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
   transition: all 0.3s ease;
 }
 
-.program-item .time {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--gold);
-  min-width: 45px;
+.timeline-content {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-left: 0.25rem;
 }
 
-.program-item .event h3 {
+.timeline-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  min-width: 42px;
+  letter-spacing: 0.02em;
+}
+
+.timeline-event {
   font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--text);
+  line-height: 1.4;
 }
 
 /* Active & Completed states */
-.program-item.active {
-  background: rgba(138, 118, 80, 0.15);
-  border-left-width: 4px;
-  transform: scale(1.02);
-}
-
-.rtl .program-item.active {
-  border-left-width: 3px;
-  border-right-width: 4px;
-}
-
-.program-item.completed {
-  opacity: 0.5;
-}
-
-.program-item.completed .time,
-.program-item.completed .event h3 {
-  text-decoration: line-through;
-  text-decoration-color: var(--gold);
-}
-
-.now-indicator {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
+.timeline-item.active::after {
   background: var(--gold);
-  color: white;
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  padding: 0.2rem 0.5rem;
-  border-radius: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  animation: pulse 2s ease-in-out infinite;
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px var(--gold-glow);
 }
 
-.rtl .now-indicator {
-  right: auto;
-  left: 0.75rem;
+.timeline-item.active .timeline-content {
+  transform: translateX(4px);
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+.rtl .timeline-item.active .timeline-content {
+  transform: translateX(-4px);
 }
 
-/* Info Section */
-.info-section {
-  margin-bottom: 1.5rem;
-}
-
-.venue-card {
-  background: var(--white);
-  border: 1px solid rgba(138, 118, 80, 0.2);
-  border-radius: 12px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.venue-icon {
-  font-size: 1.5rem;
-}
-
-.venue-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.venue-label {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.venue-address {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--text);
-}
-
-.map-btn {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: white;
-  background: var(--gold);
-  padding: 0.5rem 0.75rem;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.map-btn:hover {
-  background: #6d5c3d;
-  transform: scale(1.05);
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.info-card {
-  background: var(--white);
-  border-radius: 10px;
-  padding: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.25rem;
-}
-
-.info-icon {
-  font-size: 1.25rem;
-  margin-bottom: 0.15rem;
-}
-
-.info-card .info-label {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.info-card .info-value {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.calendar-btn {
-  width: 100%;
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
+.timeline-item.active .timeline-event {
   color: var(--gold);
-  background: var(--gold-light);
-  border: 1px solid rgba(138, 118, 80, 0.3);
-  padding: 0.85rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
-.calendar-btn:hover {
+.timeline-item.completed::after {
   background: var(--gold);
+  opacity: 0.4;
+}
+
+.timeline-item.completed .timeline-time,
+.timeline-item.completed .timeline-event {
+  opacity: 0.4;
+}
+
+.now-badge {
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
   color: white;
+  background: var(--gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: 0.5rem;
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+.rtl .now-badge {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
 }
 
 /* Photo Section */
-.photo-section {
-  margin-bottom: 1.5rem;
-}
-
-.photo-share-box {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--white) 100%);
-  border: 1px solid rgba(138, 118, 80, 0.2);
-  border-radius: 12px;
-  padding: 1.25rem;
+.photo-card {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--bg-card) 100%);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .photo-title {
@@ -403,112 +358,123 @@
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--gold);
-  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .photo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  padding: 0.75rem 2rem;
-  border-radius: 25px;
+  padding: 0.85rem 2rem;
+  border-radius: 30px;
   text-decoration: none;
   background: var(--gold);
   color: white;
-  display: inline-block;
-  margin: 0.5rem 0;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(138, 118, 80, 0.25);
 }
 
 .photo-btn:hover {
-  background: #6d5c3d;
-  transform: scale(1.05);
+  background: var(--gold-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(138, 118, 80, 0.35);
 }
 
 .hashtag-tag {
   font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--gold);
-  background: rgba(138, 118, 80, 0.1);
-  padding: 0.3rem 0.75rem;
-  border-radius: 15px;
-  margin-top: 0.25rem;
-}
-
-/* Ceremony Note */
-.ceremony-note {
-  text-align: center;
-  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--text-dim);
-  padding: 1rem;
   background: var(--gold-light);
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-/* Footer Section */
-.footer-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(138, 118, 80, 0.2);
-}
-
-.footer-section .info-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 0.5rem 0;
-}
-
-.footer-section .info-label {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--gold);
-}
-
-.footer-section .info-value {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--text);
-}
-
-/* Gift/Vipps Section */
-.gift-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0;
-}
-
-.gift-label {
-  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--gold);
-}
-
-.vipps-btn {
-  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  background: #ff5b24;
-  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-top: 1rem;
   display: inline-block;
-  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
 }
 
-.vipps-btn:hover {
-  background: #e04d1a;
-  transform: scale(1.05);
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-ornament {
+  font-size: 1.25rem;
+  opacity: 0.3;
+  letter-spacing: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-names {
+  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gold);
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wedding-header {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.section-card {
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+}
+
+.section-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.section-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+  .couple-names {
+    font-size: 1.9rem;
+  }
+  
+  .section-card {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .timeline-event {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 500px) {
+  .wedding-container {
+    padding: 0 2rem 4rem;
+  }
+  
+  .couple-names {
+    font-size: 2.5rem;
+  }
+  
+  .section-card {
+    padding: 2rem;
+    border-radius: 24px;
+  }
 }
