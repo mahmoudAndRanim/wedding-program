@@ -213,7 +213,7 @@ function App() {
           <p className="photo-desc">{t.photoDesc}</p>
           <div className="photo-buttons">
             <a 
-              href="https://photos.app.goo.gl/XXXXXX" 
+              href="https://photos.app.goo.gl/NdQ25MoYWbPVSLuu9" 
               target="_blank" 
               rel="noopener noreferrer"
               className="photo-btn upload"
@@ -221,7 +221,7 @@ function App() {
               {t.photoBtn}
             </a>
             <a 
-              href="https://photos.app.goo.gl/XXXXXX" 
+              href="https://photos.app.goo.gl/NdQ25MoYWbPVSLuu9" 
               target="_blank" 
               rel="noopener noreferrer"
               className="photo-btn view"
