@@ -478,3 +478,37 @@
   font-weight: 400;
   color: var(--text);
 }
+
+/* Gift/Vipps Section */
+.gift-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.gift-label {
+  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.vipps-btn {
+  font-family: 'Montserrat', 'Noto Naskh Arabic', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  background: #ff5b24;
+  color: white;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.vipps-btn:hover {
+  background: #e04d1a;
+  transform: scale(1.05);
+}
