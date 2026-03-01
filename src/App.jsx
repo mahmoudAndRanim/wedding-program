@@ -102,14 +102,16 @@ const translations = {
     dresscodeValue: 'Festantrekk',
     parking: 'Parkering',
     parkingValue: 'Gratis parkering ved lokalet',
-    ceremonyNote: 'Vi ber om mobilfri seremoni 🙏',
     getDirections: 'Veibeskrivelse',
     addToCalendar: 'Legg til i kalender',
     photoTitle: 'Del bilder & video',
-    photoDesc: 'Last opp bilder og videoer fra festen!',
-    photoBtn: 'Last opp',
+    photoDesc: 'Velg bilder/videoer og del til albumet',
+    photoSelect: 'Velg filer',
+    photoShare: 'Del til album',
     photoView: 'Se album',
-    photoTip: 'Tips: Åpne Google Photos-appen for beste opplevelse',
+    photoTip: 'Velg filer → Trykk "Del til album" → Velg Google Photos',
+    photoSelected: 'valgt',
+    photoNone: 'Ingen filer valgt',
     gift: 'Ønskeliste',
     giftValue: 'Bidrag til bryllupsreise',
     contact: 'Kontakt',
@@ -137,14 +139,16 @@ const translations = {
     dresscodeValue: 'رسمي أنيق',
     parking: 'موقف السيارات',
     parkingValue: 'موقف مجاني بجانب القاعة',
-    ceremonyNote: 'نرجو عدم استخدام الهاتف أثناء الحفل 🙏',
     getDirections: 'الاتجاهات',
     addToCalendar: 'أضف للتقويم',
     photoTitle: 'شاركوا الصور والفيديو',
-    photoDesc: 'ارفعوا صور وفيديوهات الحفلة!',
-    photoBtn: 'رفع',
+    photoDesc: 'اختاروا الصور/الفيديو وشاركوها في الألبوم',
+    photoSelect: 'اختيار ملفات',
+    photoShare: 'مشاركة للألبوم',
     photoView: 'الألبوم',
-    photoTip: 'نصيحة: افتحوا تطبيق Google Photos لأفضل تجربة',
+    photoTip: 'اختاروا الملفات ← اضغطوا "مشاركة" ← اختاروا Google Photos',
+    photoSelected: 'ملفات',
+    photoNone: 'لم يتم اختيار ملفات',
     gift: 'الهدايا',
     giftValue: 'مساهمة في شهر العسل',
     contact: 'للتواصل',
@@ -159,9 +163,39 @@ function App() {
   const [lang, setLang] = useState('ar')
   const [currentEvent, setCurrentEvent] = useState(-1)
   const [countdown, setCountdown] = useState(getCountdown())
+  const [selectedFiles, setSelectedFiles] = useState([])
   const t = translations[lang]
   const isArabic = lang === 'ar'
   const isWeddingDay = new Date().toISOString().split('T')[0] === WEDDING_DATE
+
+  const handleFileSelect = (e) => {
+    const files = Array.from(e.target.files)
+    setSelectedFiles(files)
+  }
+
+  const handleShare = async () => {
+    if (selectedFiles.length === 0) return
+    
+    // Check if Web Share API with files is supported
+    if (navigator.canShare && navigator.canShare({ files: selectedFiles })) {
+      try {
+        await navigator.share({
+          files: selectedFiles,
+          title: 'Mahmoud & Ranim Wedding',
+          text: t.hashtag,
+        })
+        setSelectedFiles([])
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          // Fallback to opening album
+          window.open(PHOTO_ALBUM_URL, '_blank')
+        }
+      }
+    } else {
+      // Fallback for browsers that don't support file sharing
+      window.open(PHOTO_ALBUM_URL, '_blank')
+    }
+  }
 
   useEffect(() => {
     setCurrentEvent(getCurrentEventIndex())
@@ -303,21 +337,47 @@ function App() {
           <div className="photo-icon">📷</div>
           <h3 className="photo-title">{t.photoTitle}</h3>
           <p className="photo-desc">{t.photoDesc}</p>
+          
+          {/* File selection */}
+          <div className="file-upload-area">
+            <input 
+              type="file" 
+              id="photo-input"
+              accept="image/*,video/*"
+              multiple
+              onChange={handleFileSelect}
+              className="file-input"
+            />
+            <label htmlFor="photo-input" className="file-label">
+              📁 {t.photoSelect}
+            </label>
+            
+            {selectedFiles.length > 0 ? (
+              <div className="file-count">
+                ✓ {selectedFiles.length} {t.photoSelected}
+              </div>
+            ) : (
+              <div className="file-count empty">{t.photoNone}</div>
+            )}
+          </div>
+
           <div className="photo-buttons">
-            <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn upload">
-              {t.photoBtn}
-            </a>
+            <button 
+              onClick={handleShare}
+              className={`photo-btn upload ${selectedFiles.length === 0 ? 'disabled' : ''}`}
+              disabled={selectedFiles.length === 0}
+            >
+              📤 {t.photoShare}
+            </button>
             <a href={PHOTO_ALBUM_URL} target="_blank" rel="noopener noreferrer" className="photo-btn view">
-              {t.photoView}
+              👀 {t.photoView}
             </a>
           </div>
+          
           <p className="photo-tip">{t.photoTip}</p>
           <div className="hashtag-tag">{t.hashtag}</div>
         </div>
       </section>
-
-      {/* Ceremony note */}
-      <p className="ceremony-note">{t.ceremonyNote}</p>
 
       {/* Gift & Contact */}
       <section className="footer-section">
