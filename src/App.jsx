@@ -70,7 +70,7 @@ const translations = {
 }
 
 function App() {
-  const [lang, setLang] = useState('no')
+  const [lang, setLang] = useState('ar')
   const [currentEvent, setCurrentEvent] = useState(-1)
   const t = translations[lang]
   const isArabic = lang === 'ar'
