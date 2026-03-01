@@ -3,13 +3,10 @@ import './App.css'
 
 // Wedding date: March 28, 2026 at 17:00
 const WEDDING_DATE = '2026-03-28'
-const WEDDING_DATETIME = new Date('2026-03-28T17:00:00')
 
 // DEMO MODE: Set to true to test active indicator
 const DEMO_MODE = false
 
-const VENUE_ADDRESS = 'Trondheimsveien 48F, 2007 Kjeller'
-const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(VENUE_ADDRESS)}`
 const PHOTO_ALBUM_URL = 'https://photos.app.goo.gl/NdQ25MoYWbPVSLuu9'
 
 const programTimes = [
@@ -45,41 +42,6 @@ function getCurrentEventIndex() {
   }
   
   return -1
-}
-
-function getCountdown() {
-  const now = new Date()
-  const diff = WEDDING_DATETIME - now
-  
-  if (diff <= 0) return null
-  
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-  
-  return { days, hours, minutes }
-}
-
-function generateCalendarFile() {
-  const event = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Wedding//Mahmoud & Ranim//EN
-BEGIN:VEVENT
-DTSTART:20260328T170000
-DTEND:20260329T020000
-SUMMARY:Bryllup - Mahmoud & Ranim
-LOCATION:Trondheimsveien 48F, 2007 Kjeller
-DESCRIPTION:Vi gleder oss til å feire med dere!
-END:VEVENT
-END:VCALENDAR`
-  
-  const blob = new Blob([event], { type: 'text/calendar' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = 'mahmoud-ranim-bryllup.ics'
-  a.click()
-  URL.revokeObjectURL(url)
 }
 
 const translations = {
@@ -162,11 +124,9 @@ const translations = {
 function App() {
   const [lang, setLang] = useState('ar')
   const [currentEvent, setCurrentEvent] = useState(-1)
-  const [countdown, setCountdown] = useState(getCountdown())
   const [selectedFiles, setSelectedFiles] = useState([])
   const t = translations[lang]
   const isArabic = lang === 'ar'
-  const isWeddingDay = new Date().toISOString().split('T')[0] === WEDDING_DATE
 
   const handleFileSelect = (e) => {
     const files = Array.from(e.target.files)
@@ -203,14 +163,7 @@ function App() {
       setCurrentEvent(getCurrentEventIndex())
     }, 60000)
     
-    const countdownInterval = setInterval(() => {
-      setCountdown(getCountdown())
-    }, 60000)
-    
-    return () => {
-      clearInterval(eventInterval)
-      clearInterval(countdownInterval)
-    }
+    return () => clearInterval(eventInterval)
   }, [])
 
   return (
@@ -229,30 +182,6 @@ function App() {
         <h1 className="page-title">{t.program}</h1>
         <p className="date-line">{t.date}</p>
       </header>
-
-      {/* Countdown or Wedding Day Message */}
-      {isWeddingDay ? (
-        <div className="wedding-day-banner">
-          {t.weddingDay}
-        </div>
-      ) : countdown && (
-        <section className="countdown-section">
-          <div className="countdown-boxes">
-            <div className="countdown-box">
-              <span className="countdown-number">{countdown.days}</span>
-              <span className="countdown-label">{t.days}</span>
-            </div>
-            <div className="countdown-box">
-              <span className="countdown-number">{countdown.hours}</span>
-              <span className="countdown-label">{t.hours}</span>
-            </div>
-            <div className="countdown-box">
-              <span className="countdown-number">{countdown.minutes}</span>
-              <span className="countdown-label">{t.minutes}</span>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Program */}
       <section className="program-section">
@@ -293,42 +222,6 @@ function App() {
             {currentEvent === 5 && <div className="now-indicator">{lang === 'ar' ? 'الآن' : 'Nå'}</div>}
           </div>
         </div>
-      </section>
-
-      {/* Venue & Info */}
-      <section className="info-section">
-        <div className="venue-card">
-          <div className="venue-icon">📍</div>
-          <div className="venue-details">
-            <span className="venue-label">{t.venue}</span>
-            <span className="venue-address">{VENUE_ADDRESS}</span>
-          </div>
-          <a 
-            href={GOOGLE_MAPS_URL} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="map-btn"
-          >
-            {t.getDirections}
-          </a>
-        </div>
-
-        <div className="info-grid">
-          <div className="info-card">
-            <span className="info-icon">👔</span>
-            <span className="info-label">{t.dresscode}</span>
-            <span className="info-value">{t.dresscodeValue}</span>
-          </div>
-          <div className="info-card">
-            <span className="info-icon">🚗</span>
-            <span className="info-label">{t.parking}</span>
-            <span className="info-value">{t.parkingValue}</span>
-          </div>
-        </div>
-
-        <button className="calendar-btn" onClick={generateCalendarFile}>
-          📅 {t.addToCalendar}
-        </button>
       </section>
 
       {/* Photo sharing */}
