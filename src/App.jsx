@@ -133,10 +133,6 @@ function App() {
       <header className="wedding-header">
         <div className="header-ornament">✦ ✦ ✦</div>
         <p className="page-title">{t.program}</p>
-        <div className="date-display">
-          <span className="date-icon">📅</span>
-          <span>{t.date}</span>
-        </div>
       </header>
 
       {/* Program */}
