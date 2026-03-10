@@ -5,7 +5,7 @@ import './App.css'
 const WEDDING_DATE = '2026-03-28'
 
 // DEMO MODE: Set to true to test active indicator
-const DEMO_MODE = true
+const DEMO_MODE = false
 
 const PHOTO_ALBUM_URL = 'https://photos.app.goo.gl/NdQ25MoYWbPVSLuu9'
 
