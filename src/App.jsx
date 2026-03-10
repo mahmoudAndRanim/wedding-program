@@ -10,9 +10,8 @@ const DEMO_MODE = false
 const PHOTO_ALBUM_URL = 'https://photos.app.goo.gl/NdQ25MoYWbPVSLuu9'
 
 const programTimes = [
-  { time: '17:00', endTime: '17:45' },
-  { time: '18:30', endTime: '18:35' },
-  { time: '18:30', endTime: '19:45' },
+  { time: '17:00', endTime: '18:30' },
+  { time: '18:30', endTime: '20:00' },
   { time: '20:00', endTime: '20:45' },
   { time: '20:45', endTime: '21:15' },
   { time: '21:15', endTime: '21:30' },
@@ -55,14 +54,13 @@ const translations = {
     days: 'dager',
     hours: 'timer',
     minutes: 'min',
-    reception: 'Mottak av gjester + rolig musikk',
-    entrance: 'Brudeparets inngang',
-    celebrate: 'Dans og feiring med brudeparet',
+    reception: 'Velkomst',
+    celebrate: 'Inngang & feiring',
     dinner: 'Middag',
     dancing: 'Dans',
     slowDance: 'Slow dance',
     cakeCutting: 'Kakeskjæring',
-    end: 'Slutt på programmet / musikken fortsetter',
+    end: 'Avslutning',
     venue: 'Sted',
     dresscode: 'Dresscode',
     dresscodeValue: 'Festantrekk',
@@ -84,14 +82,13 @@ const translations = {
     days: 'يوم',
     hours: 'ساعة',
     minutes: 'دقيقة',
-    reception: 'استقبال الضيوف + موسيقى هادئة',
-    entrance: 'دخلة العرسان',
-    celebrate: 'رقص واحتفال مع العرسان',
+    reception: 'استقبال الضيوف',
+    celebrate: 'دخلة العرسان والاحتفال',
     dinner: 'العشاء',
     dancing: 'رقص',
     slowDance: 'سلو دانس',
     cakeCutting: 'تقطيع الكيك',
-    end: 'نهاية البرنامج / استمرار الموسيقى',
+    end: 'نهاية البرنامج',
     venue: 'المكان',
     dresscode: 'الملابس',
     dresscodeValue: 'رسمي أنيق',
@@ -148,7 +145,7 @@ function App() {
         <div className="program-timeline">
           <div className={`timeline-item ${currentEvent === 0 ? 'active' : ''} ${currentEvent > 0 ? 'completed' : ''}`}>
             <div className="timeline-content">
-              <span className="timeline-time">17:00 – 17:45</span>
+              <span className="timeline-time">17:00 – 18:30</span>
               <span className="timeline-event">{t.reception}</span>
               {currentEvent === 0 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
@@ -156,57 +153,49 @@ function App() {
 
           <div className={`timeline-item ${currentEvent === 1 ? 'active' : ''} ${currentEvent > 1 ? 'completed' : ''}`}>
             <div className="timeline-content">
-              <span className="timeline-time">18:30</span>
-              <span className="timeline-event">{t.entrance}</span>
+              <span className="timeline-time">18:30 – 19:45</span>
+              <span className="timeline-event">{t.celebrate}</span>
               {currentEvent === 1 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 2 ? 'active' : ''} ${currentEvent > 2 ? 'completed' : ''}`}>
             <div className="timeline-content">
-              <span className="timeline-time">18:30 – 19:45</span>
-              <span className="timeline-event">{t.celebrate}</span>
+              <span className="timeline-time">20:00</span>
+              <span className="timeline-event">{t.dinner}</span>
               {currentEvent === 2 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 3 ? 'active' : ''} ${currentEvent > 3 ? 'completed' : ''}`}>
             <div className="timeline-content">
-              <span className="timeline-time">20:00</span>
-              <span className="timeline-event">{t.dinner}</span>
+              <span className="timeline-time">20:45 – 21:15</span>
+              <span className="timeline-event">{t.dancing}</span>
               {currentEvent === 3 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 4 ? 'active' : ''} ${currentEvent > 4 ? 'completed' : ''}`}>
             <div className="timeline-content">
-              <span className="timeline-time">20:45 – 21:15</span>
-              <span className="timeline-event">{t.dancing}</span>
+              <span className="timeline-time">21:15 – 21:30</span>
+              <span className="timeline-event">{t.slowDance}</span>
               {currentEvent === 4 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 5 ? 'active' : ''} ${currentEvent > 5 ? 'completed' : ''}`}>
             <div className="timeline-content">
-              <span className="timeline-time">21:15 – 21:30</span>
-              <span className="timeline-event">{t.slowDance}</span>
+              <span className="timeline-time">~21:30</span>
+              <span className="timeline-event">{t.cakeCutting}</span>
               {currentEvent === 5 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
           </div>
 
-          <div className={`timeline-item ${currentEvent === 6 ? 'active' : ''} ${currentEvent > 6 ? 'completed' : ''}`}>
-            <div className="timeline-content">
-              <span className="timeline-time">~21:30</span>
-              <span className="timeline-event">{t.cakeCutting}</span>
-              {currentEvent === 6 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
-            </div>
-          </div>
-
-          <div className={`timeline-item ${currentEvent === 7 ? 'active' : ''}`}>
+          <div className={`timeline-item ${currentEvent === 6 ? 'active' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">22:00</span>
               <span className="timeline-event">{t.end}</span>
-              {currentEvent === 7 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              {currentEvent === 6 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
             </div>
           </div>
         </div>
