@@ -76,7 +76,7 @@ const translations = {
   },
   ar: {
     couple: 'محمود و رنيم',
-    program: 'برنامج الزفاف',
+    program: 'برنامج الحفل',
     date: '٢٨ مارس ٢٠٢٦',
     countdown: 'العد التنازلي',
     days: 'يوم',
@@ -132,7 +132,6 @@ function App() {
       {/* Header */}
       <header className="wedding-header">
         <div className="header-ornament">✦ ✦ ✦</div>
-        <h1 className="couple-names">{t.couple}</h1>
         <p className="page-title">{t.program}</p>
         <div className="date-display">
           <span className="date-icon">📅</span>

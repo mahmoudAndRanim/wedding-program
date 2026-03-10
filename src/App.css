@@ -141,7 +141,7 @@ body {
 /* Header */
 .wedding-header {
   text-align: center;
-  padding: 4rem 0 2.5rem;
+  padding: 2.5rem 0 1.5rem;
   position: relative;
   z-index: 1;
 }
@@ -164,13 +164,12 @@ body {
 }
 
 .page-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.7rem;
+  font-family: 'Cormorant Garamond', 'Noto Naskh Arabic', serif;
+  font-size: 1.4rem;
   font-weight: 500;
-  color: var(--text-dim);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
 }
 
 .date-display {
