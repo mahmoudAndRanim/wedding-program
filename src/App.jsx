@@ -146,56 +146,49 @@ function App() {
           <div className={`timeline-item ${currentEvent === 0 ? 'active' : ''} ${currentEvent > 0 ? 'completed' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">17:00 – 18:30</span>
-              <span className="timeline-event">{t.reception}</span>
-              {currentEvent === 0 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.reception}{currentEvent === 0 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 1 ? 'active' : ''} ${currentEvent > 1 ? 'completed' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">18:30 – 19:45</span>
-              <span className="timeline-event">{t.celebrate}</span>
-              {currentEvent === 1 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.celebrate}{currentEvent === 1 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 2 ? 'active' : ''} ${currentEvent > 2 ? 'completed' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">20:00</span>
-              <span className="timeline-event">{t.dinner}</span>
-              {currentEvent === 2 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.dinner}{currentEvent === 2 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 3 ? 'active' : ''} ${currentEvent > 3 ? 'completed' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">20:45 – 21:15</span>
-              <span className="timeline-event">{t.dancing}</span>
-              {currentEvent === 3 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.dancing}{currentEvent === 3 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 4 ? 'active' : ''} ${currentEvent > 4 ? 'completed' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">21:15 – 21:30</span>
-              <span className="timeline-event">{t.slowDance}</span>
-              {currentEvent === 4 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.slowDance}{currentEvent === 4 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 5 ? 'active' : ''} ${currentEvent > 5 ? 'completed' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">~21:30</span>
-              <span className="timeline-event">{t.cakeCutting}</span>
-              {currentEvent === 5 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.cakeCutting}{currentEvent === 5 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
 
           <div className={`timeline-item ${currentEvent === 6 ? 'active' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">22:00</span>
-              <span className="timeline-event">{t.end}</span>
-              {currentEvent === 6 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}
+              <span className="timeline-event">{t.end}{currentEvent === 6 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
         </div>

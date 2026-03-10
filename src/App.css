@@ -271,8 +271,8 @@ body {
 
 .timeline-content {
   display: flex;
-  align-items: baseline;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.15rem;
   margin-left: 0.25rem;
 }
 
@@ -334,6 +334,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-left: 0.5rem;
+  vertical-align: middle;
   animation: pulse-badge 2s ease-in-out infinite;
 }
 
