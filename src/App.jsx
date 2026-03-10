@@ -5,7 +5,7 @@ import './App.css'
 const WEDDING_DATE = '2026-03-28'
 
 // DEMO MODE: Set to true to test active indicator
-const DEMO_MODE = false
+const DEMO_MODE = true
 
 const PHOTO_ALBUM_URL = 'https://photos.app.goo.gl/NdQ25MoYWbPVSLuu9'
 
@@ -20,7 +20,7 @@ const programTimes = [
 ]
 
 function getCurrentEventIndex() {
-  if (DEMO_MODE) return 1
+  if (DEMO_MODE) return 0
   
   const now = new Date()
   const today = now.toISOString().split('T')[0]
@@ -60,7 +60,7 @@ const translations = {
     dancing: 'Dans',
     slowDance: 'Slow dance',
     cakeCutting: 'Kakeskjæring',
-    end: 'Avslutning',
+    continuation: 'Videre dans & feiring',
     venue: 'Sted',
     dresscode: 'Dresscode',
     dresscodeValue: 'Festantrekk',
@@ -88,7 +88,7 @@ const translations = {
     dancing: 'رقص',
     slowDance: 'سلو دانس',
     cakeCutting: 'تقطيع الكيك',
-    end: 'نهاية البرنامج',
+    continuation: 'استمرار الرقص والاحتفال',
     venue: 'المكان',
     dresscode: 'الملابس',
     dresscodeValue: 'رسمي أنيق',
@@ -188,7 +188,7 @@ function App() {
           <div className={`timeline-item ${currentEvent === 6 ? 'active' : ''}`}>
             <div className="timeline-content">
               <span className="timeline-time">22:00</span>
-              <span className="timeline-event">{t.end}{currentEvent === 6 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
+              <span className="timeline-event">{t.continuation}{currentEvent === 6 && <span className="now-badge">{lang === 'ar' ? 'الآن' : 'Nå'}</span>}</span>
             </div>
           </div>
         </div>
